@@ -28,9 +28,6 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 
-const r = require('randomstring');
-
-console.log(r.generate(64));
 
 const PORT= process.env.PORT || 8080;
 app.listen(PORT);
