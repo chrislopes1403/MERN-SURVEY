@@ -1,0 +1,32 @@
+
+
+.comment-customs
+{
+    max-height: 400px;
+    min-height: 400px;
+    overflow-y: scroll;
+}
+
+
+.segment-customs
+{
+    width:365px !important;
+    background-color: aliceblue;
+}
+
+.response-custom
+{
+    display: inline;
+}
+
+.yes-custom
+{
+    margin-bottom: 20px !important;
+}
+
+
+mark {
+    background: teal;
+    color: white;
+  }
+  

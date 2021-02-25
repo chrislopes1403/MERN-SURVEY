@@ -1,68 +1,66 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Payments from './payments';
-
-class Header extends React.Component {
-    state = {  }
+import './Header.css';
 
 
+class Header extends Component {
+  renderContent() {
+    switch (this.props.auth) {
+      case null:
+        return;
 
-    renderContent()
-    {
+      case false:
+        return(<div className="ui item">
 
-        switch(this.props.auth)
-        {
-            case null:
-                return null;
-            case false:
-                return <li><a href="/auth/google">Login With Google</a></li>
+        <a  href="/auth/google" className="ui google button hover-custom ">
+          <i className="google  icon " ></i>
+          Sign in with Google
+        </a>
 
-            default:
-                return [
-                <li key="1"><Payments/></li>,
-                <li key="2" style={{margin:'0 10px'}}>
-                    Credits:{this.props.auth.credits}
-                </li>,
-                <li key="3"><a href="/api/logout">Logout</a></li>
-            ]
+        </div>);
 
-        }
 
+
+      default:
+        return [
+          <div  key="1"><Payments /></div>,
+          <div  key="2" className="ui item">Credits: {this.props.auth.credits}</div>,
+          <a  key="3" className="ui item"href="/api/logout">Logout</a>
+        ];
     }
+  }
+
+  render() {
+    return (
+            <div className="ui secondary menu " style={{'backgroundColor':'#EDEDED', 'marginTop':'10px'}}>
+               <Link
+                  to={this.props.auth ? '/surveys' : '/'}
+                  className="ui item"
+                >
+                MERN-Survey
+              </Link>
+              
+
+
+              <div className="right menu">
+                
+                {this.renderContent()}
+
+               
 
 
 
+              </div>
 
-
-
-
-    render() { 
-        return ( 
-            <nav>
-                <div className="nav-wrapper">
-                    <Link 
-                    
-                    to={this.props.auth ? '/surverys' : '/' } 
-                    
-                    className="left brand-logo"
-                    >
-                         MERN-Survey
-                    </Link>
-                    <ul className="right">
-                       {this.renderContent()}
-                    </ul>
-                </div>
-            </nav>
-         );
-    }
+            </div>
+            );
+  }
 }
- 
-const mapStateToProps=(state)=>
-{
 
-    return {auth:state}
-};
-
+function mapStateToProps({ auth }) {
+  return { auth };
+}
 
 export default connect(mapStateToProps)(Header);
