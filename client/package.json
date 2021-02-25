@@ -13,6 +13,7 @@
     "http-proxy-middleware": "^1.0.6",
     "jquery": "^3.5.1",
     "lodash": "^4.17.20",
+    "mark.js": "^8.11.1",
     "materialize-css": "^1.0.0",
     "react": "^17.0.1",
     "react-chartjs-2": "^2.11.1",
