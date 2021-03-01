@@ -47,8 +47,8 @@ class SurveyList extends React.Component {
                     </div>
                     <div className="extra content">
                         <i className="edit icon"></i>
-                        <a> Yes: {survey.yes}</a>
-                        <a> No: {survey.no}</a>
+                        <a> Agree: {survey.yes}</a>
+                        <a> Disagree: {survey.no}</a>
                         {this.renderDelete(survey._id)}
                     </div>
                     </div>
